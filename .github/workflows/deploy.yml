@@ -36,6 +36,6 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           docker pull drsubhajitchakraborty/dockertest:latest
-          docker stop yourapp || true
-          docker rm yourapp || true
-          docker run -d -p 3000:3000 --name yourapp drsubhajitchakraborty/dockertest:latest
+          docker stop dockertest || true
+          docker rm dockertest || true
+          docker run -d -p 3000:3000 --name dockertest drsubhajitchakraborty/dockertest:latest
