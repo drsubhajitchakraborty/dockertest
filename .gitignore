@@ -1,1 +1,52 @@
+# Node modules
 node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables
+.env
+.env.* # in case you use .env.production, .env.development, etc.
+
+# Build files
+dist/
+build/
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker files
+*.local
+docker-compose.override.yml
+
+# GitHub Actions
+.github/workflows/*.secret
+.github/secrets.env
+
+# Ignore Docker named volumes (optional if used)
+volumes/
+
+# Ignore Redis dump file (if persisted)
+dump.rdb
+
+# Ignore image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+
+# Others
+coverage/
