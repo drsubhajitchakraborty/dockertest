@@ -26,7 +26,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: drsubhajitchakraborty/dockertest
+        tags: drsubhajitchakraborty/dockertest:latest
 
     - name: SSH to Server and Deploy
       uses: appleboy/ssh-action@master
@@ -36,5 +36,6 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           docker pull drsubhajitchakraborty/dockertest:latest
-          docker stop yourapp || true && docker rm yourapp || true
-          docker run -d -p 3000:3000 --name yourapp yourdockerhubusername/yourimagename:latest
+          docker stop yourapp || true
+          docker rm yourapp || true
+          docker run -d -p 3000:3000 --name yourapp drsubhajitchakraborty/dockertest:latest
