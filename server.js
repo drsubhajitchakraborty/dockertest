@@ -6,14 +6,12 @@ const app=express();
 require('dotenv').config();
 //const indexRoute=require('')
 
-
 dbConnect();
 
 app.get('/', async (req, res) => {
   try {
     await redisClient.set("key1", "Hello Redis");
     const value = await redisClient.get("key1");
-
     res.json({ message: "Redis Working", value });
   } catch (error) {
     console.error("Redis error:", error);
@@ -22,5 +20,5 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(process.env.port||8000,()=>{
-    console.log(`Server Running Sucessfully at port ${process.env.port}`);
+    console.log(`✅ Server Running Sucessfully at port ${process.env.port}`);
 })
