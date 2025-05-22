@@ -8,7 +8,7 @@ const redisClient = redis.createClient({
       if (retries > 10) {
         return new Error('Too many retries to connect to Redis');
       }
-      return 1000; // wait 1s between retries
+      return 1000; 
     },
   }
 });
