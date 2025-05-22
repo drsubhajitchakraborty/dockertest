@@ -23,6 +23,6 @@ router.get('/', async (req, res) => {
 // 👇 ADD THIS LINE
 app.use("/", router);
 
-app.listen(process.env.port || 8000, () => {
+app.listen(process.env.port || 3000, () => {
   console.log(`✅ Server Running Successfully at port ${process.env.port}`);
 });
