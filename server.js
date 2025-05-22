@@ -1,12 +1,11 @@
-const express=require('express');
-const dbConnect=require('./config/db');
-const redisClient=require('./config/redisClient');
+const express = require('express');
+const dbConnect = require('./config/db');
+const redisClient = require('./config/redisClient');
 
-const app=express();
-const router=express.Router();
+const app = express();
+const router = express.Router();
 
 require('dotenv').config();
-//const indexRoute=require('')
 
 dbConnect();
 
@@ -21,6 +20,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-app.listen(process.env.port||8000,()=>{
-    console.log(`✅ Server Running Sucessfully at port ${process.env.port}`);
-})
+// 👇 ADD THIS LINE
+app.use("/", router);
+
+app.listen(process.env.port || 8000, () => {
+  console.log(`✅ Server Running Successfully at port ${process.env.port}`);
+});
