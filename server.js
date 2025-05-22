@@ -21,6 +21,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.listen(process.env.port||7000,()=>{
+app.listen(process.env.port||8000,()=>{
     console.log(`Server Running Sucessfully at port ${process.env.port}`);
 })
