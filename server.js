@@ -3,12 +3,14 @@ const dbConnect=require('./config/db');
 const redisClient=require('./config/redisClient');
 
 const app=express();
+const router=express.Router();
+
 require('dotenv').config();
 //const indexRoute=require('')
 
 dbConnect();
 
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     await redisClient.set("key1", "Hello Redis");
     const value = await redisClient.get("key1");
