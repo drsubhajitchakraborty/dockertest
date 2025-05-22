@@ -1,13 +1,27 @@
 const redis = require('redis');
 
 const redisClient = redis.createClient({
-  url: 'redis://redis:6379', // use 'redis://redis:6379' when using docker-compose
+  url: process.env.REDIS_URL || 'redis://redis:6379',
+  socket: {
+    reconnectStrategy: (retries) => {
+      console.log(`🔁 Retry attempt: ${retries}`);
+      if (retries > 10) {
+        return new Error('Too many retries to connect to Redis');
+      }
+      return 1000; // wait 1s between retries
+    },
+  }
 });
 
 redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
 (async () => {
-  await redisClient.connect();
+  try {
+    await redisClient.connect();
+    console.log('✅ Connected to Redis');
+  } catch (err) {
+    console.error('❌ Redis connection failed', err);
+  }
 })();
 
 module.exports = redisClient;
